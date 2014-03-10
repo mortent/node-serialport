@@ -362,7 +362,8 @@ function SerialPortFactory() {
         }
 
         self.emit('close');
-        self.removeAllListeners();
+        // Errors might happen after we close the port and we want them to be handled.
+        //self.removeAllListeners();
         self.closing = false;
         self.fd = 0;
 
