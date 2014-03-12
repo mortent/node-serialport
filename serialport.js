@@ -354,7 +354,7 @@ function SerialPortFactory() {
     try {
       console.log('Closing!');
       factory.SerialPortBinding.close(fd, function (err) {
-
+        console.log('Close completed');
         if (err) {
           if (callback) {
             callback(err);
