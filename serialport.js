@@ -211,6 +211,7 @@ function SerialPortFactory() {
     if (!Buffer.isBuffer(buffer)) {
       buffer = new Buffer(buffer);
     }
+    console.log('Writing!');
     factory.SerialPortBinding.write(this.fd, buffer, function (err, results) {
       if (callback) {
         callback(err, results);
@@ -291,6 +292,7 @@ function SerialPortFactory() {
         }
       }
 
+      console.log('Reading!');
       fs.read(self.fd, self.pool, self.pool.used, toRead, null, function (err, bytesRead) {
         var readPool = self.pool;
         var bytesRequested = toRead;
@@ -350,6 +352,7 @@ function SerialPortFactory() {
 
     self.closing = true;
     try {
+      console.log('Closing!');
       factory.SerialPortBinding.close(fd, function (err) {
 
         if (err) {
@@ -440,6 +443,7 @@ function SerialPortFactory() {
       return;
     }
 
+    console.log('Flush!');
     factory.SerialPortBinding.flush(fd, function (err, result) {
       if (err) {
         if (callback) {
@@ -467,6 +471,7 @@ function SerialPortFactory() {
       return;
     }
 
+    console.log('Drain!');
     factory.SerialPortBinding.drain(fd, function (err, result) {
       if (err) {
         if (callback) {
